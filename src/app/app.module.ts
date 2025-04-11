@@ -15,44 +15,38 @@ import {
   SocialAuthServiceConfig,
   SocialLoginModule,
 } from '@abacritt/angularx-social-login';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 
-@NgModule({
-  declarations: [AppComponent, LandingPageComponent, TrendingBlogsComponent],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    SharedModule,
-    LoginComponent,
-    SignUpComponent,
-    SocialLoginModule,
-    HttpClientModule,
-  ],
-  providers: [
-    {
-      provide: 'SocialAuthServiceConfig',
-      useValue: {
-        autoLogin: false,
-        lang: 'en',
-        providers: [
-          {
-            id: FacebookLoginProvider.PROVIDER_ID,
-            provider: new FacebookLoginProvider('1343609393615085'),
-          },
-        ],
-        onError: err => {
-          console.error(err);
+@NgModule({ declarations: [AppComponent, LandingPageComponent, TrendingBlogsComponent],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        SharedModule,
+        LoginComponent,
+        SignUpComponent,
+        SocialLoginModule], providers: [
+        {
+            provide: 'SocialAuthServiceConfig',
+            useValue: {
+                autoLogin: false,
+                lang: 'en',
+                providers: [
+                    {
+                        id: FacebookLoginProvider.PROVIDER_ID,
+                        provider: new FacebookLoginProvider('1343609393615085'),
+                    },
+                ],
+                onError: err => {
+                    console.error(err);
+                },
+            } as SocialAuthServiceConfig,
         },
-      } as SocialAuthServiceConfig,
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true,
-    },
-  ],
-  bootstrap: [AppComponent],
-})
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthInterceptor,
+            multi: true,
+        },
+        provideHttpClient(withInterceptorsFromDi()),
+    ] })
 export class AppModule {}
