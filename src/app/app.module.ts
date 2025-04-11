@@ -9,7 +9,12 @@ import { SharedModule } from './shared/shared.module';
 import { TrendingBlogsComponent } from './landing-page/components/trending-blogs/trending-blogs.component';
 import { LoginComponent } from './authentication/login/login.component';
 import { SignUpComponent } from './authentication/sign-up/sign-up.component';
-import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from '@abacritt/angularx-social-login';
+import {
+  FacebookLoginProvider,
+  GoogleLoginProvider,
+  SocialAuthServiceConfig,
+  SocialLoginModule,
+} from '@abacritt/angularx-social-login';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 
@@ -34,19 +39,19 @@ import { AuthInterceptor } from './core/interceptors/auth.interceptor';
         providers: [
           {
             id: FacebookLoginProvider.PROVIDER_ID,
-            provider: new FacebookLoginProvider('1343609393615085')
-          }
+            provider: new FacebookLoginProvider('1343609393615085'),
+          },
         ],
-        onError: (err) => {
+        onError: err => {
           console.error(err);
-        }
+        },
       } as SocialAuthServiceConfig,
-    }
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: AuthInterceptor,
-    //   multi: true
-    // }
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })

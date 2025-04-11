@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { CardData } from '../../interface/card.model';
+import { Router } from '@angular/router';
+import { PostDetails } from 'src/app/dashboard/interface/post.model';
 
 @Component({
   selector: 'app-generic-card',
@@ -12,21 +13,14 @@ export class GenericCardComponent {
    * The card object that contains all data we need to display.
    * Conforms to the CardData interface if you created one.
    */
-  @Input() cardData!: CardData;
+  @Input({ required: true }) cardData!: PostDetails;
 
-  /**
-   * Alternatively, you can define individual @Input() for each field
-   * if you prefer not to use a separate interface. For example:
-   *
-   * @Input() category!: string;
-   * @Input() title!: string;
-   * @Input() description!: string;
-   * @Input() authorName!: string;
-   * @Input() date!: string;
-   * @Input() imageUrl!: string;
-   * @Input() link?: string;
-   *
-   * Then adapt the HTML template accordingly.
-   */
+  constructor(private router: Router) { }
+
+  onClickPost(id: number) {
+    debugger;
+    this.router.navigate(['/dashboard/post', id])
+
+  }
 
 }

@@ -1,1 +1,14 @@
-<app-nav-bar></app-nav-bar>
+
+
+  <div class="header">
+    <div class="title"><h1>Blog Posts</h1></div>
+    <div class="add-button">
+      <button routerLink="/dashboard/addPost">Add</button>
+    </div>
+  </div>
+
+  <app-generic-table
+    [data]="tableData"
+    [columns]="columns"
+    (rowClick)="onRowClick($event)"
+  ></app-generic-table>

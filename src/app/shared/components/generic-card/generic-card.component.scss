@@ -17,6 +17,7 @@ $color-primary: #4b6ef5; // example for headings or highlights
   text-decoration: none;
   cursor: pointer;
   transition: box-shadow 0.3s ease;
+  min-width: 21.25rem;;
 
   &:hover {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -51,17 +52,19 @@ $color-primary: #4b6ef5; // example for headings or highlights
   }
 
   .card-title {
-    display: inline-flex;
+    // display: inline-flex;
     align-items: center;
     font-size: 1.25rem;
     color: $color-text;
     margin: 0 0 0.5rem;
+    max-width: 380px;
+    /* Set a fixed maximum width; adjust as needed */
+    white-space: nowrap;
+    /* Prevent text from wrapping to new lines */
+    overflow: hidden;
+    /* Hide any text that overflows the max width */
+    text-overflow: ellipsis;
 
-    .card-arrow {
-      margin-left: 4px;
-      font-weight: bold;
-      color: $color-subtext;
-    }
   }
 
   .card-description {
@@ -69,7 +72,7 @@ $color-primary: #4b6ef5; // example for headings or highlights
     color: $color-subtext;
     margin: 0;
     line-height: 1.4;
-    max-width: 250px;
+    max-width: 400px;
     /* Set a fixed maximum width; adjust as needed */
     white-space: nowrap;
     /* Prevent text from wrapping to new lines */

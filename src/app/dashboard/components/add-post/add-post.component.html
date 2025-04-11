@@ -1,1 +1,30 @@
-<p>add-post works!</p>
+<div class="editor-container">
+  <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+
+    <!-- Title -->
+    <input class="post-title" type="text" placeholder="Title" formControlName="title" />
+    <div *ngIf="postForm.get('title')?.invalid && postForm.get('title')?.touched" class="error">
+      Title is required
+    </div>
+
+    <!-- Content -->
+    <textarea class="post-content" rows="10" placeholder="Tell your story..." formControlName="content"></textarea>
+    <div *ngIf="postForm.get('content')?.invalid && postForm.get('content')?.touched" class="error">
+      Content is required
+    </div>
+
+    <!-- Category -->
+    <select class="category-select" formControlName="category">
+      <option value="" disabled selected>Select category</option>
+      <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+    </select>
+    <div *ngIf="postForm.get('category')?.invalid && postForm.get('category')?.touched" class="error">
+      Category is required
+    </div>
+
+    <!-- Submit -->
+    <button class="submit-btn" type="submit" [disabled]="postForm.invalid">
+      Publish
+    </button>
+  </form>
+</div>

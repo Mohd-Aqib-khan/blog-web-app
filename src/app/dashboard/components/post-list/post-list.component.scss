@@ -1,0 +1,18 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .title {
+    h1 {
+      margin: 1.4rem;
+    }
+  }
+  .add-button {
+    button {
+      padding: 0.5rem 1.5rem;
+      border-radius: 19px;
+      border: 1px #42307d;
+      background: linear-gradient(90deg, #efd5ff 29%, #515ada 117%);
+    }
+  }
+}

@@ -1,0 +1,68 @@
+.editor-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 20px;
+  font-family: 'Georgia', serif;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.post-content {
+  font-size: 1.2rem;
+  border: none;
+  outline: none;
+  resize: none;
+  height: 300px;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.category-select {
+  font-size: 1rem;
+  padding: 10px;
+  margin-bottom: 20px;
+  width: fit-content;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  appearance: none;
+  background-color: white;
+}
+
+.submit-btn {
+  align-self: flex-start;
+  padding: 10px 24px;
+  font-size: 1rem;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:disabled {
+    background-color: #999;
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    background-color: #333;
+  }
+}
+
+.error {
+  color: red;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}

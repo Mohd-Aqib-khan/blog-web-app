@@ -1,72 +1,46 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
-import { CardData } from 'src/app/shared/interface/card.model';
+import { Component, OnInit } from '@angular/core';
+import { firstValueFrom } from 'rxjs';
+import { PostDetails } from 'src/app/dashboard/interface/post.model';
+import { PostService } from 'src/app/dashboard/services/post.service';
 
 @Component({
   selector: 'app-trending-blogs',
   templateUrl: './trending-blogs.component.html',
-  styleUrls: ['./trending-blogs.component.scss']
+  styleUrls: ['./trending-blogs.component.scss'],
+  providers: [PostService]
 })
-export class TrendingBlogsComponent {
+export class TrendingBlogsComponent implements OnInit {
 
-  // List of trending blog cards
-  trendingBlogs: CardData[] = [
-    {
-      category: 'Tech',
-      title: 'The Rise of AI',
-      description: 'Exploring the latest advances in artificial intelligence.',
-      authorName: 'Jane Doe',
-      date: '10 Feb 2025',
-      imageUrl: 'assets/images/Image.png',
-      link: '/blog/ai-rise'
-    },
-    {
-      category: 'Design',
-      title: 'UI/UX Best Practices',
-      description: 'How to design apps that users love.',
-      authorName: 'John Smith',
-      date: '22 Jan 2025',
-      imageUrl: 'assets/images/Image (1).png',
-      link: '/blog/ui-ux-best'
-    },
-    {
-      category: 'Travel',
-      title: 'Exploring the Alps',
-      description: 'A breathtaking journey across the mountains.',
-      authorName: 'Alice Johnson',
-      date: '15 Mar 2025',
-      imageUrl: 'assets/images/Image (2).png',
-      link: '/blog/alps-travel'
-    },
-    {
-      category: 'Food',
-      title: 'Exquisite Culinary Arts',
-      description: 'Discovering the secret recipes of top chefs.',
-      authorName: 'Robert Brown',
-      date: '05 Apr 2025',
-      imageUrl: 'assets/images/Image.png',
-      link: '/blog/culinary-arts'
-    },
-    // Add more cards if desired.
-  ];
+  slides: PostDetails[][] = [];
+  private readonly CHUNK_SIZE = 2;
 
-  // Grouped slides: each slide will show 4 cards
-  slides: CardData[][] = [];
+  constructor(private postService: PostService) { }
 
   ngOnInit(): void {
-    this.slides = this.groupIntoChunks(this.trendingBlogs, 2);
+    this.loadTrendingPosts();
   }
 
-  /**
-   * Groups an array into chunks of specified size.
-   * @param arr The array to group.
-   * @param chunkSize Number of items per chunk.
-   */
-  groupIntoChunks(arr: CardData[], chunkSize: number): CardData[][] {
-    const chunks: CardData[][] = [];
-    for (let i = 0; i < arr.length; i += chunkSize) {
-      chunks.push(arr.slice(i, i + chunkSize));
+  private async loadTrendingPosts(): Promise<void> {
+    try {
+      const response = await firstValueFrom(this.postService.getTrendingPosts(true));
+      const posts = response?.data ?? [];
+      this.slides = this.groupIntoChunks(posts, this.CHUNK_SIZE);
+    } catch (error) {
+      console.error('Failed to load trending posts:', error);
     }
-    return chunks;
   }
 
+  private groupIntoChunks(arr: PostDetails[], chunkSize: number): PostDetails[][] {
+    return Array.from({ length: Math.ceil(arr.length / chunkSize) }, (_, i) =>
+      arr.slice(i * chunkSize, i * chunkSize + chunkSize)
+    );
+  }
+
+  isNonEmptyObject(obj: any): boolean {
+    return obj && typeof obj === 'object' && Object.keys(obj).length > 0;
+  }
+
+  trackByFn(index: number, item: PostDetails): any {
+    return item.id;
+  }
 }

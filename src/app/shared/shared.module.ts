@@ -10,13 +10,18 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { GenericCardComponent } from './components/generic-card/generic-card.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator'; // Add this
+import { GenericTableComponent } from './components/generic-table/generic-table-component';
+import { RouterModule } from '@angular/router';
 
 
 
 @NgModule({
   declarations: [
     GenericCardComponent,
-    NavBarComponent
+    NavBarComponent,
+    GenericTableComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +32,9 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
     MatToolbarModule,
     MatInputModule,
     MatFormFieldModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatPaginatorModule, // Ensure this is included
+    MatSortModule,
 
   ],
   exports: [
@@ -40,7 +47,8 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
     MatFormFieldModule,
     ReactiveFormsModule,
     GenericCardComponent,
-    NavBarComponent
+    NavBarComponent,
+    GenericTableComponent
   ]
 })
 export class SharedModule { }

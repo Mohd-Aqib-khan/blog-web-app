@@ -14,9 +14,9 @@
   gap: 1.5rem;
   margin-bottom: 1.5rem;
 
-  img {
-    width: 2.5rem;
-    height: 2.5rem;
+  img, .g_id_signin {
+    width: 48px;
+    height: 48px;
     cursor: pointer;
     transition: transform 0.2s ease;
 
@@ -136,7 +136,25 @@
 }
 
 /* Adjust Google Sign-In button text spacing */
-:host ::ng-deep .nsm7Bb-HzV7m-LgbsSe-Bz112c {
-  padding: 0 !important;
-  margin-left: 10px !important;
+:host ::ng-deep .g_id_signin {
+  .S9gUrf-YoZ4jf{
+    .nsm7Bb-HzV7m-LgbsSe.Bz112c-LgbsSe {
+      width: 50px !important;
+      height: 50px !important;
+      border-radius: 50% !important;
+      .nsm7Bb-HzV7m-LgbsSe-bN97Pc-sM5MNb {
+        .nsm7Bb-HzV7m-LgbsSe-Bz112c {
+          width: 27px !important;
+          height: 27px !important;
+          padding: 0 !important;
+          margin-left: 10px !important;
+        }
+      }
+    }
+  }
+
 }
+// :host ::ng-deep .nsm7Bb-HzV7m-LgbsSe-Bz112c {
+//   padding: 0 !important;
+//   margin-left: 10px !important;
+// }

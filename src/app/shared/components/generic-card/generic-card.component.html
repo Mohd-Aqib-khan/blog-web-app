@@ -1,24 +1,31 @@
 <!-- generic-card.component.html -->
-<div class="card-container" *ngIf="cardData.link">
+<div class="card-container" (click)="onClickPost(cardData.id)">
   <!-- If you are using a router link to navigate on click -->
   <div class="card-image-wrapper">
-    <img class="card-image" [src]="cardData.imageUrl" alt="Card Image" />
+    <img class="card-image" [src]="cardData.image" alt="Card Image" />
   </div>
   <div class="card-body">
-    <p class="card-category">{{ cardData.category }}</p>
+    <p class="card-category">{{ cardData.category || '' }}</p>
     <h2 class="card-title">
-      {{ cardData.title }}
-      <span class="card-arrow" aria-hidden="true">→</span>
+      {{ cardData.title || '' }}
     </h2>
     <p class="card-description">
-      {{ cardData.description }}
+      {{ cardData.content }}
     </p>
     <div class="card-footer">
       <div class="card-author">
-        <img class="author-avatar" src="https://via.placeholder.com/32" alt="Avatar" />
+        <ng-container *ngIf="cardData?.user?.profileImage; else defaultAvatar">
+          <img class="author-avatar" [src]="cardData.user.profileImage" alt="Avatar" />
+        </ng-container>
+        <ng-template #defaultAvatar>
+          <img class="author-avatar" src="assets/images/male-employee-image.png" alt="Avatar" />
+        </ng-template>
+
         <div>
-          <p class="author-name">{{ cardData.authorName }}</p>
-          <p class="author-date">{{ cardData.date }}</p>
+          <p class="author-name">{{ cardData && cardData.user && cardData.user.name }}</p>
+          <p class="author-date">
+            {{ cardData && cardData.createdAt && (cardData.createdAt | date: 'mediumDate') }}
+          </p>
         </div>
       </div>
     </div>
