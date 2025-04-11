@@ -11,7 +11,6 @@ import { LoginComponent } from './authentication/login/login.component';
 import { SignUpComponent } from './authentication/sign-up/sign-up.component';
 import {
   FacebookLoginProvider,
-  GoogleLoginProvider,
   SocialAuthServiceConfig,
   SocialLoginModule,
 } from '@abacritt/angularx-social-login';
@@ -29,6 +28,7 @@ import { AuthInterceptor } from './core/interceptors/auth.interceptor';
     LoginComponent,
     SignUpComponent,
     SocialLoginModule,
+
   ],
   providers: [
     {
