@@ -7,11 +7,17 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
+import { GenericCardComponent } from './components/generic-card/generic-card.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    GenericCardComponent,
+    NavBarComponent
+  ],
   imports: [
     CommonModule,
     MatButtonModule,
@@ -21,6 +27,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatToolbarModule,
     MatInputModule,
     MatFormFieldModule,
+    ReactiveFormsModule
 
   ],
   exports: [
@@ -31,6 +38,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatToolbarModule,
     MatInputModule,
     MatFormFieldModule,
+    ReactiveFormsModule,
+    GenericCardComponent,
+    NavBarComponent
   ]
 })
 export class SharedModule { }

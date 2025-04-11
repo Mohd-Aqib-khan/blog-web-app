@@ -1,0 +1,113 @@
+/* generic-card.component.scss */
+
+/* Sample color variables (optional) */
+$color-text: #333333;
+$color-subtext: #666666;
+$color-bg: #ffffff;
+$color-border: #dddddd;
+$color-primary: #4b6ef5; // example for headings or highlights
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  background-color: $color-bg;
+  border: 1px solid $color-border;
+  border-radius: 8px;
+  overflow: hidden;
+  text-decoration: none;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.card-image-wrapper {
+  width: 100%;
+  height: 200px;
+  /* or auto if you prefer */
+  overflow: hidden;
+
+  .card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.card-body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  .card-category {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: $color-primary;
+    margin: 0;
+  }
+
+  .card-title {
+    display: inline-flex;
+    align-items: center;
+    font-size: 1.25rem;
+    color: $color-text;
+    margin: 0 0 0.5rem;
+
+    .card-arrow {
+      margin-left: 4px;
+      font-weight: bold;
+      color: $color-subtext;
+    }
+  }
+
+  .card-description {
+    font-size: 0.95rem;
+    color: $color-subtext;
+    margin: 0;
+    line-height: 1.4;
+    max-width: 250px;
+    /* Set a fixed maximum width; adjust as needed */
+    white-space: nowrap;
+    /* Prevent text from wrapping to new lines */
+    overflow: hidden;
+    /* Hide any text that overflows the max width */
+    text-overflow: ellipsis;
+  }
+
+  .card-footer {
+    margin-top: auto;
+    /* push footer to the bottom if desired */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .card-author {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+
+    .author-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .author-name {
+      font-size: 0.9rem;
+      color: $color-text;
+      margin: 0;
+    }
+
+    .author-date {
+      font-size: 0.8rem;
+      color: $color-subtext;
+      margin: 0;
+    }
+  }
+}

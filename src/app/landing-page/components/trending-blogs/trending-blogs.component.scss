@@ -1,0 +1,20 @@
+/* trending-blogs.component.scss */
+.trending-blog-container {
+  padding: 1rem;
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: #333;
+  }
+
+  /* Optionally adjust spacing for cards */
+  .carousel .row {
+    margin: 0;
+  }
+
+  .carousel .col-md-3 {
+    padding: 0 8px;
+  }
+}

@@ -1,0 +1,52 @@
+<section class="landing-container">
+  <div class="landing-header">
+    <div class="highlight">Our Blog</div>
+    <h3>Resources and insights</h3>
+    <p>Your platform for latest tech blogs and insights</p>
+  </div>
+  <!-- This is just one section with wave at the bottom -->
+  <svg viewBox="0 0 120 20" preserveAspectRatio="none">
+    <path d="M0,10 C30,0 90,20 120,10 V20 H0 Z" fill="#fff" />
+  </svg>
+</section>
+<section class="blog-form-container">
+  <div class="trending-blog-wrapper">
+    <!-- <app-trending-blogs></app-trending-blogs> -->
+  </div>
+  <div class="wrapper">
+    <div class="title-text">
+      <div class="title" *ngIf="activeTab === 'login'" (click)="switchTab('signup')">
+        Login
+      </div>
+      <div class="title" *ngIf="activeTab === 'signup'" (click)="switchTab('login')">
+        Signup
+      </div>
+    </div>
+
+    <div class="form-container">
+      <div class="slide-controls">
+        <label
+          class="slide login"
+          [ngStyle]="{ color: activeTab === 'login' ? '#fff' : '#6c5ce7' }"
+          (click)="switchTab('login')"
+          >Login</label
+        >
+        <label
+          class="slide signup"
+          [ngStyle]="{ color: activeTab === 'signup' ? '#fff' : '#6c5ce7' }"
+          (click)="switchTab('signup')"
+          >Signup</label
+        >
+        <div class="slider-tab" [ngStyle]="{ left: activeTab === 'login' ? '0%' : '50%' }"></div>
+      </div>
+
+      <div class="form-inner">
+        <app-login *ngIf="activeTab === 'login'" (switchToSignup)="switchTab('signup')"></app-login>
+        <app-sign-up
+          *ngIf="activeTab === 'signup'"
+          (switchToSignup)="switchTab('login')"
+        ></app-sign-up>
+      </div>
+    </div>
+  </div>
+</section>

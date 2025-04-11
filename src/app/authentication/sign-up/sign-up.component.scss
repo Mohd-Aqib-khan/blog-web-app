@@ -1,0 +1,95 @@
+.wrapper {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 1.5rem 2rem rgba(0, 0, 0, 0.1);
+  max-width: 24.375rem;
+  width: 100%;
+  overflow: hidden;
+}
+
+.title {
+  font-size: 2.1875rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.field {
+  width: 100%;
+  margin-top: 1.25rem;
+  height: 3.125rem;
+
+  input {
+    width: 100%;
+    height: 100%;
+    padding-left: 1rem;
+    font-size: 1.0625rem;
+    border: 1px solid lightgrey;
+    border-radius: 0.9375rem;
+    border-bottom-width: 2px;
+    outline: none;
+    transition: all 0.3s ease;
+
+    &::placeholder {
+      color: #999;
+    }
+
+    &:focus {
+      border-color: #515ada;
+
+      &::placeholder {
+        color: #515ada;
+      }
+    }
+  }
+}
+
+.signup-link {
+  margin-top: 1.5rem;
+  text-align: center;
+
+  a {
+    color: #515ada;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.btn {
+  height: 3.125rem;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.9375rem;
+  margin-top: 1.25rem;
+
+  .btn-layer {
+    height: 100%;
+    width: 300%;
+    position: absolute;
+    left: -100%;
+    background: linear-gradient(90deg, #efd5ff 29%, #515ada 117%);
+    transition: all 0.4s ease;
+    border-radius: 0.9375rem;
+  }
+
+  &:hover .btn-layer {
+    left: 0;
+  }
+
+  input[type='submit'] {
+    height: 100%;
+    width: 100%;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 500;
+    cursor: pointer;
+    z-index: 1;
+    position: relative;
+  }
+}

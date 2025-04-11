@@ -1,0 +1,30 @@
+<nav class="navbar">
+  <!-- Section 1: Icon to navigate to dashboard -->
+  <div class="nav-section icon-section">
+    <a routerLink="/dashboard" class="nav-icon">
+      <i class="bi bi-speedometer2"></i>
+    </a>
+  </div>
+
+  <!-- Section 2: Center Title -->
+  <div class="nav-section title-section">
+    <span class="website-name">My Website</span>
+  </div>
+
+  <!-- Section 3: Auth Buttons -->
+  <div class="nav-section actions-section">
+    <ng-container *ngIf="isLoggedIn; else notLogged">
+      <button class="btn btn-outline-danger" (click)="logout()">Logout</button>
+    </ng-container>
+    <ng-template #notLogged>
+      <div class="social-icons">
+        <img (click)="signupWithGoogle()" src="assets/icons/google.png" alt="Google" />
+        <img (click)="signupWithFacebook()" src="assets/icons/facebook.png" alt="Facebook" />
+      </div>
+    </ng-template>
+  </div>
+
+  <svg viewBox="0 0 120 20" preserveAspectRatio="none">
+    <path d="M0,10 C30,0 90,20 120,10 V20 H0 Z" fill="#fff" />
+  </svg>
+</nav>

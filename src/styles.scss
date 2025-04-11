@@ -2,3 +2,36 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body,
+input {
+  font-family: "Poppins", sans-serif;
+}
+
+/* Big screens (desktops & large laptops) */
+@media (min-width: 1200px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+/* Tablets (768px - 1199px) */
+@media (min-width: 768px) and (max-width: 1199px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+/* Mobile devices (less than 768px) */
+@media (max-width: 767px) {
+  html {
+    font-size: 14px;
+  }
+}
