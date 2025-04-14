@@ -15,13 +15,14 @@ export class AuthService {
   signInWithGoogle(): void {
     // this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(user => {
     //   this.user = user;
-    //   // Send token to backend
+    //   // Send token to backend11
     //   this.http.post<{access_token: string}>('auth/google', {
     //     idToken: user.idToken
     //   }).subscribe(response => {
     //     console.log('JWT from server:', response);
     //   });
-    // });
+    // });1
+
   }
 
   signInWithFacebook(): void {
@@ -33,7 +34,6 @@ export class AuthService {
       }).subscribe(response => {
         console.log('JWT from server:', response);
         console.log('JWT from server:', response);
-        // ✅ Save token and navigate manually
         localStorage.setItem('token', response.data.access_token);
         this.router.navigate(['/dashboard']);
       });

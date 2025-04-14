@@ -10,7 +10,6 @@ const routes: Routes = [
     component: LandingPageComponent,
   },
   { path: "dashboard", loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) },
-  // { path: '**', redirectTo: 'our-blogs', pathMatch: 'full' },
 ];
 
 @NgModule({

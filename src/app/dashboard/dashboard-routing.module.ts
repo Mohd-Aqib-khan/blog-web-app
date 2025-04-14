@@ -15,7 +15,6 @@ const routes: Routes = [
       { path: 'postList', component: PostListComponent, canActivate: [AuthGuard] },
       { path: 'addPost', component: AddPostComponent, canActivate: [AuthGuard] },
       { path: 'post/:id', component: PostDetailComponent },
-      // Add more child routes here
     ],
   },
 ];
